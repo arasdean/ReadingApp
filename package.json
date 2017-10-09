@@ -1,0 +1,22 @@
+{
+  "name": "readingapp",
+  "version": "1.0.0",
+  "description": "a webap to help keep track of readings ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arasdean/ReadingApp.git"
+  },
+  "keywords": [
+    "reading"
+  ],
+  "author": "Haroon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arasdean/ReadingApp/issues"
+  },
+  "homepage": "https://github.com/arasdean/ReadingApp#readme"
+}
