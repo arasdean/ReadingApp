@@ -1,7 +1,28 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
+
+mongoose.connect("mongodb://localhost/nodeproject");
+let db = mongoose.connection;
+
+//check connection
+
+db.once('open', function(){
+  console.log('Connected to MongoDB');
+});
+
+//check for db errors
+
+db.on('error', function(err){
+  console.log(err);
+});
+
 // Init App
 const app = express();
+
+//Bring in models
+
+const Book = require('./models/books');
 
 //Load View Engine
 
@@ -11,30 +32,18 @@ app.set('view engine', 'pug');
 
 //Home Route
 app.get('/', function(req, res){
-  let books = [
-    {
-      id:1,
-      title: 'Book 1',
-      author: 'Haroon',
-      body: "This is book one"
-    },
-    {
-      id:2,
-      title: 'Book 2',
-      author: 'Bilal',
-      body: "This is book two"
-    },
-    {
-      id:3,
-      title: 'Book 3',
-      author: 'John Doe',
-      body: "This is book three"
-    }
-  ];
-  res.render("index", {
+Book.find({}, function(err, books){
+  if(err){
+    console.log(err);
+  }
+  else{res.render("index", {
     title:'Books',
     books: books
-  });
+  });}
+
+
+});
+
 });
 
 // Add Route

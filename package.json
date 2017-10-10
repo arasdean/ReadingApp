@@ -21,6 +21,7 @@
   "homepage": "https://github.com/arasdean/ReadingApp#readme",
   "dependencies": {
     "express": "^4.16.1",
+    "mongoose": "^4.12.1",
     "pug": "^2.0.0-rc.4"
   }
 }
