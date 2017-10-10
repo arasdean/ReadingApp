@@ -4,13 +4,14 @@ block content
   h1 #{title}
   form(method='POST', action='/books/add')
     #form-group 
-      label Title; 
+      label Title: 
       input.form-control(name='title', type='text')
     #form-group
-      label Author;
+      label Author:
       input.form-control(name='author', type='text')
     #form-group
-      label Body;
+      label Body:
       textarea.form-control(name='body')
+    br
     input.btn.btn-primary(type='submit', value='Submit')
         

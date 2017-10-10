@@ -38,6 +38,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // create application/json parser
 app.use(bodyParser.json())
 
+//Set Public Folder
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Home Route
 app.get('/', function(req, res){
@@ -54,6 +57,19 @@ Book.find({}, function(err, books){
 });
 
 });
+
+// Get Single Article
+app.get('/book/:id', function(req, res){
+  Book.findById(req.params.id, function(err, book){
+    res.render('book', {
+      book:book
+    });
+  });
+});
+
+
+
+
 
 // Add Route
 
