@@ -4,7 +4,7 @@
   "description": "a webap to help keep track of readings ",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/arasdean/ReadingApp/issues"
   },
-  "homepage": "https://github.com/arasdean/ReadingApp#readme"
+  "homepage": "https://github.com/arasdean/ReadingApp#readme",
+  "dependencies": {
+    "express": "^4.16.1",
+    "pug": "^2.0.0-rc.4"
+  }
 }
