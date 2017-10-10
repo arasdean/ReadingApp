@@ -4,6 +4,7 @@ html
   head
       title ReadingApp
       link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+      link(rel='stylesheet' href='/css/style.css')
   body
     nav.navbar.navbar-inverse
       .container
@@ -21,6 +22,8 @@ html
                 li
                   a(href='/books/add') Add Books
                 li
+                  a(href='/books/edit_book') Edit Books
+                li
                   a(href='#contact') Contact
     br
     br
@@ -31,5 +34,8 @@ html
         hr
         footer
           p Copyright &copy; 2017
-    script(src='/bower_components/jquery/dist/jquery/dist/jquery.js')
+    
+    script(src='/bower_components/jquery/dist/jquery.js')
     script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+    script(src='/js/main.js')
+    

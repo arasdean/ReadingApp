@@ -79,6 +79,51 @@ app.get('/books/add', function(req, res){
   });
 });
 
+//  Load Edit form
+
+app.get('/book/edit/:id', function(req, res){
+  Book.findById(req.params.id, function(err, book){
+    res.render('edit_book', {
+      title:'Edit Article',
+      book:book
+    });
+  });
+});
+
+// Edit Post Form
+//Add Submit POST route
+app.post('/books/edit/:id', function(req, res){
+  let book = {};
+  // console.log(req.body.author);
+  book.title = req.body.title;
+  book.author = req.body.author;
+  book.body = req.body.body;
+
+  let query = {_id:req.params.id}
+
+  Book.update(query, book, function(err){
+    if(err){
+      console.log(err);
+      return;
+    } else{
+      res.redirect('/');
+    }
+  })
+});
+
+// Delete funciton
+app.delete('/book/:id', function(req, res){
+  let query= {_id:req.params.id}
+  Book.remove(query, function(err){
+    if(err){
+      console.log(err)
+    }
+    res.send('Success');
+  });
+});
+
+
+
 //Add Submit POST route
 app.post('/books/add', function(req, res){
   let book = new Book();

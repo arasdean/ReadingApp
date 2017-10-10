@@ -5,3 +5,6 @@ block content
   
   h5 Written by #{book.author}
   p=book.body
+  hr
+  a.btn.btn-default(href='/book/edit/'+book._id) Edit
+  a.btn.btn-danger.delete-book(href='#', data-id=book._id) Delete
