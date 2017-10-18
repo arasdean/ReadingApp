@@ -2,10 +2,21 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const amazon = require('amazon-product-api');
+const {OperationHelper} = require('apac');
+const details = require('./details');
 
 mongoose.connect("mongodb://localhost/nodeproject");
 let db = mongoose.connection;
+
+//OperationHelper
+const opHelper = new OperationHelper({
+    awsId:     details.AccessId,
+    awsSecret: details.Secret,
+    assocId:   details.Tag,
+    locale: 'US'
+});
+
+
 
 //check connection
 
@@ -45,17 +56,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Home Route
 app.get('/', function(req, res){
-Book.find({}, function(err, books){
-  if(err){
-    console.log(err);
-  }
-  else{res.render("index", {
-    title:'Books',
-    books: books
-  });}
-
-
+  opHelper.execute('ItemSearch', {
+  'SearchIndex': 'Books',
+  'Title': 'Order of the Phoenix',
+  'Author': 'JK Rowling',
+  'ResponseGroup': 'Images'
+}).then((response) => {
+  res.send(response.result);
+    // console.log("Results object: ", response.result);
+    // console.log("Raw response body: ", response.responseBody);
+}).catch((err) => {
+    console.error("Something went wrong! ", err);
 });
+// Book.find({}, function(err, books){
+//   if(err){
+//     console.log(err);
+//   }
+//   else{res.render("index", {
+//     title:'Books',
+//     books: books
+//   });}
+//
+//
+// });
 
 });
 
