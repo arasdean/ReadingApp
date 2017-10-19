@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $.getJSON('data.json', function(data){
+           console.log(data);
+            document.write("the number of pages: " + data.ItemSearchResponse.Items.Item["0"].ItemAttributes.NumberOfPages);
+            // var parsed = $.parseJSON(data);
+            // data = JSON.parse(data); // you will have to parse the data first
+            // console.log(parsed.ItemSearchResponse.Items.Item[1].ItemAttributes.Label);
+          // console.log(parsedData.ItemSearchResponse.Items.Item[1][1])
+        });
+      })
+
+    </script>
+
+
+  </body>
+</html>

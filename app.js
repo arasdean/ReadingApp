@@ -60,7 +60,7 @@ app.get('/', function(req, res){
   'SearchIndex': 'Books',
   'Title': 'Order of the Phoenix',
   'Author': 'JK Rowling',
-  'ResponseGroup': 'Images'
+  'ResponseGroup': 'Images, ItemAttributes'
 }).then((response) => {
   res.send(response.result);
     // console.log("Results object: ", response.result);
